@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
+    tools:context=".MenuActivity"
     android:orientation="vertical"
     android:layout_margin="16dp">
 
@@ -25,7 +25,8 @@
         android:layout_weight="1"
         android:text="Choice point"
         android:gravity="center"
-        android:layout_margin="16dp"/>
+        android:layout_margin="16dp"
+        android:onClick="goToChoicepoint"/>
 
     <Button
         android:id="@+id/bullseyeButton"
@@ -34,6 +35,7 @@
         android:layout_weight="1"
         android:text="Bullseye"
         android:gravity="center"
-        android:layout_margin="16dp"/>
+        android:layout_margin="16dp"
+        android:onClick="goToBullseye"/>
 
 </LinearLayout>
