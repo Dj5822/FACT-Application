@@ -42,7 +42,6 @@
         android:layout_weight="1"
         android:text="Bullseye"
         android:gravity="center"
-        android:layout_margin="16dp"
-        android:onClick="goToBullseye"/>
+        android:layout_margin="16dp" />
 
 </LinearLayout>
