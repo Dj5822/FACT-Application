@@ -34,17 +34,17 @@
             android:spinnerMode="dropdown"/>
     </LinearLayout>
 
-<!--    <ImageView-->
-<!--        android:id="@+id/imageView"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        tools:srcCompat="@drawable/untitled" />-->
-
     <RelativeLayout
+        android:id="@+id/rr"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/asdf">
-    </RelativeLayout>
+        android:layout_height="wrap_content">
 
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/untitled" />
+
+    </RelativeLayout>
 
 </LinearLayout>
