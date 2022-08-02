@@ -9,14 +9,21 @@
     android:orientation="vertical"
     android:layout_margin="16dp">
 
-    <TextView
-        android:id="@+id/menuTitle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="5"
-        android:text="Menu"
-        android:gravity="center"
-        android:textSize="64sp"/>
+<!--    <TextView-->
+<!--        android:id="@+id/menuTitle"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_weight="5"-->
+<!--        android:text="Menu"-->
+<!--        android:gravity="center"-->
+<!--        android:textSize="64sp"/>-->
+
+    <RelativeLayout
+        android:layout_width="300dp"
+        android:layout_height="400dp"
+        android:id="@+id/rr">
+
+    </RelativeLayout>
 
     <Button
         android:id="@+id/choicePointButton"
@@ -35,7 +42,6 @@
         android:layout_weight="1"
         android:text="Bullseye"
         android:gravity="center"
-        android:layout_margin="16dp"
-        android:onClick="goToBullseye"/>
+        android:layout_margin="16dp" />
 
 </LinearLayout>
