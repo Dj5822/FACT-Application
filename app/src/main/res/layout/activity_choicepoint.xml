@@ -6,8 +6,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ChoicepointActivity"
-    android:orientation="vertical"
-    android:layout_margin="16dp">
+    android:orientation="vertical">
+
+    <ImageView
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:src="@drawable/choice_point_background_center"
+        android:scaleType="centerCrop" />
 
     <TextView
         android:id="@+id/menuTitle"
