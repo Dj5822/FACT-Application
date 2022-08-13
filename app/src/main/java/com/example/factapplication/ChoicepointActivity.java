@@ -33,26 +33,37 @@ public class ChoicepointActivity extends AppCompatActivity {
         vh.choicepointView.setOnTouchListener(new OnSwipeTouchListener(ChoicepointActivity.this) {
             public void onSwipeLeft() {
                 if (position == "center") {
-                    position = "right";
-                    vh.backgroundImage.setImageResource(R.drawable.choice_point_background_right);
+                    goToRightScreen();
                 }
                 else if (position == "left") {
-                    position = "center";
-                    vh.backgroundImage.setImageResource(R.drawable.choice_point_background_center);
+                    goToCenterScreen();
                 }
 
             }
 
             public void onSwipeRight(){
                 if (position == "center") {
-                    position = "left";
-                    vh.backgroundImage.setImageResource(R.drawable.choice_point_background_left);
+                    goToLeftScreen();
                 }
                 else if (position == "right") {
-                    position = "center";
-                    vh.backgroundImage.setImageResource(R.drawable.choice_point_background_center);
+                    goToCenterScreen();
                 }
             }
         });
+    }
+
+    private void goToRightScreen() {
+        position = "right";
+        vh.backgroundImage.setImageResource(R.drawable.choice_point_background_right);
+    }
+
+    private void goToLeftScreen() {
+        position = "left";
+        vh.backgroundImage.setImageResource(R.drawable.choice_point_background_left);
+    }
+
+    private void goToCenterScreen() {
+        position = "center";
+        vh.backgroundImage.setImageResource(R.drawable.choice_point_background_center);
     }
 }
