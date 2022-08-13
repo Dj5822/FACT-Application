@@ -17,6 +17,7 @@
         android:scaleType="centerCrop" />
 
     <RelativeLayout
+        android:id="@+id/choicepointChoicePanel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignStart="@id/choicePointBackground"
@@ -28,55 +29,71 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
             android:layout_alignParentTop="true"
-            android:paddingTop="96dp"
-            >
+            android:orientation="horizontal"
+            android:paddingTop="96dp">
 
             <TextView
+                android:id="@+id/choicepointLeftSideText"
                 android:layout_width="0sp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Buy whiskey"
+                android:paddingEnd="16dp"
+                android:text="@string/left_side_text"
                 android:textAlignment="center"
-                android:textSize="36sp"
-                android:paddingRight="16dp"/>
+                android:textSize="36sp" />
 
             <TextView
+                android:id="@+id/choicepointRightSideText"
                 android:layout_width="0sp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Keep walking"
+                android:paddingStart="16dp"
+                android:text="@string/right_side_text"
                 android:textAlignment="center"
-                android:textSize="36sp"
-                android:paddingLeft="16dp"
-                />
+                android:textSize="36sp" />
         </LinearLayout>
 
         <TextView
-            android:layout_width="wrap_content"
+            android:id="@+id/choicepointCurrentText"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:orientation="horizontal"
+            android:paddingTop="96dp"
+            android:text="@string/current_text"
             android:textAlignment="center"
-            android:textSize="36sp"
-            android:text="You come across the liquor store"
+            android:textSize="36sp" />
+
+        <TextView
+            android:id="@+id/choicePointScenarioText"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
-            android:paddingBottom="72dp"/>
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"
+            android:paddingBottom="72dp"
+            android:text="@string/current_scenario"
+            android:textAlignment="center"
+            android:textSize="36sp" />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
             android:layout_alignParentBottom="true"
-            >
+            android:orientation="horizontal">
+
             <Button
-                android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
-                android:text="Back"
-                android:layout_marginLeft="16sp"/>
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16sp"
+                android:text="Back" />
+
             <Button
-                android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
-                android:text="Edit"
-                android:layout_marginLeft="16sp"/>
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16sp"
+                android:text="Edit" />
         </LinearLayout>
 
     </RelativeLayout>
