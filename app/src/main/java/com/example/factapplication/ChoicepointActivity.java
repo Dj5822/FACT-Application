@@ -5,9 +5,11 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 
 public class ChoicepointActivity extends AppCompatActivity {
 
@@ -23,6 +25,7 @@ public class ChoicepointActivity extends AppCompatActivity {
         View choicePointView;
         TextView scenarioText, currentText, leftText, rightText,
         valueText1, valueText2;
+        CardView exitConfirmPopup;
 
         public ViewHolder() {
             backgroundImage = findViewById(R.id.choicePointBackground);
@@ -33,6 +36,7 @@ public class ChoicepointActivity extends AppCompatActivity {
             rightText = findViewById(R.id.choicepointRightSideText);
             valueText1 = findViewById(R.id.choicePointValueText);
             valueText2 = findViewById(R.id.choicePointValueText2);
+            exitConfirmPopup = findViewById(R.id.exitConfirmPopup);
         }
     }
 
@@ -76,6 +80,7 @@ public class ChoicepointActivity extends AppCompatActivity {
         vh.rightText.setVisibility(View.VISIBLE);
         vh.valueText1.setVisibility(View.INVISIBLE);
         vh.valueText2.setVisibility(View.INVISIBLE);
+        vh.exitConfirmPopup.setVisibility(View.INVISIBLE);
     }
 
     private void goToRightScreen() {
@@ -116,5 +121,22 @@ public class ChoicepointActivity extends AppCompatActivity {
         vh.backgroundImage.setImageResource(R.drawable.choice_point_background_center);
         vh.valueText1.setVisibility(View.INVISIBLE);
         vh.valueText2.setVisibility(View.INVISIBLE);
+    }
+
+    public void goBack(View view) {
+        finish();
+
+    }
+
+    public void hideConfirmationPopup(View view) {
+        vh.exitConfirmPopup.setVisibility(View.INVISIBLE);
+    }
+
+    public void showConfirmationPopup(View view) {
+        vh.exitConfirmPopup.setVisibility(View.VISIBLE);
+    }
+
+    public void editChoicepointText(View view) {
+        System.out.println("Edit choicepoint text");
     }
 }
