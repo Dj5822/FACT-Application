@@ -1,6 +1,7 @@
 package com.example.factapplication;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -20,7 +21,8 @@ public class ChoicepointActivity extends AppCompatActivity {
     private class ViewHolder {
         ImageView backgroundImage;
         View choicePointView;
-        TextView scenarioText, currentText, leftText, rightText;
+        TextView scenarioText, currentText, leftText, rightText,
+        valueText1, valueText2;
 
         public ViewHolder() {
             backgroundImage = findViewById(R.id.choicePointBackground);
@@ -29,6 +31,8 @@ public class ChoicepointActivity extends AppCompatActivity {
             currentText = findViewById(R.id.choicepointCurrentText);
             leftText = findViewById(R.id.choicepointLeftSideText);
             rightText = findViewById(R.id.choicepointRightSideText);
+            valueText1 = findViewById(R.id.choicePointValueText);
+            valueText2 = findViewById(R.id.choicePointValueText2);
         }
     }
 
@@ -70,6 +74,8 @@ public class ChoicepointActivity extends AppCompatActivity {
         vh.currentText.setVisibility(View.INVISIBLE);
         vh.leftText.setVisibility(View.VISIBLE);
         vh.rightText.setVisibility(View.VISIBLE);
+        vh.valueText1.setVisibility(View.INVISIBLE);
+        vh.valueText2.setVisibility(View.INVISIBLE);
     }
 
     private void goToRightScreen() {
@@ -79,6 +85,12 @@ public class ChoicepointActivity extends AppCompatActivity {
         vh.leftText.setVisibility(View.INVISIBLE);
         vh.rightText.setVisibility(View.INVISIBLE);
         vh.backgroundImage.setImageResource(R.drawable.choice_point_background_right);
+        vh.valueText1.setVisibility(View.VISIBLE);
+        vh.valueText2.setVisibility(View.VISIBLE);
+        vh.valueText1.setText("Health");
+        vh.valueText2.setText("Family");
+        vh.valueText1.setTextColor(Color.parseColor("#4dc33b"));
+        vh.valueText2.setTextColor(Color.parseColor("#4dc33b"));
     }
 
     private void goToLeftScreen() {
@@ -88,6 +100,12 @@ public class ChoicepointActivity extends AppCompatActivity {
         vh.leftText.setVisibility(View.INVISIBLE);
         vh.rightText.setVisibility(View.INVISIBLE);
         vh.backgroundImage.setImageResource(R.drawable.choice_point_background_left);
+        vh.valueText1.setVisibility(View.VISIBLE);
+        vh.valueText2.setVisibility(View.VISIBLE);
+        vh.valueText1.setText("I'm stressed so it's ok");
+        vh.valueText2.setText("I'm weak");
+        vh.valueText1.setTextColor(Color.RED);
+        vh.valueText2.setTextColor(Color.RED);
     }
 
     private void goToCenterScreen() {
@@ -96,5 +114,7 @@ public class ChoicepointActivity extends AppCompatActivity {
         vh.leftText.setVisibility(View.VISIBLE);
         vh.rightText.setVisibility(View.VISIBLE);
         vh.backgroundImage.setImageResource(R.drawable.choice_point_background_center);
+        vh.valueText1.setVisibility(View.INVISIBLE);
+        vh.valueText2.setVisibility(View.INVISIBLE);
     }
 }
