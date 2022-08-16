@@ -37,30 +37,6 @@ public class MenuActivity extends AppCompatActivity {
                 goToChoicepoint();
             }
         });
-
-        // Code related to bullseye testing.
-        final RelativeLayout rr = (RelativeLayout) findViewById(R.id.rr);
-        rr.setOnTouchListener(new View.OnTouchListener() {
-
-            @SuppressLint("UseCompatLoadingForDrawables")
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                if (event.getAction() == MotionEvent.ACTION_DOWN) {
-                    int x = (int) event.getX();
-                    int y = (int) event.getY();
-                    RelativeLayout.LayoutParams lp = new RelativeLayout.LayoutParams(
-                            RelativeLayout.LayoutParams.WRAP_CONTENT,
-                            RelativeLayout.LayoutParams.WRAP_CONTENT);
-                    ImageView iv = new ImageView(getApplicationContext());
-                    lp.setMargins(x, y, 0, 0);
-                    iv.setLayoutParams(lp);
-                    iv.setImageDrawable(getResources().getDrawable(
-                            androidx.constraintlayout.widget.R.drawable.abc_ab_share_pack_mtrl_alpha));
-                    ((ViewGroup) v).addView(iv);
-                }
-                return false;
-            }
-        });
     }
 
     public void goToChoicepoint() {

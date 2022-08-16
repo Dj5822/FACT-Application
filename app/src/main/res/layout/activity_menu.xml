@@ -9,21 +9,14 @@
     android:orientation="vertical"
     android:layout_margin="16dp">
 
-<!--    <TextView-->
-<!--        android:id="@+id/menuTitle"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_weight="5"-->
-<!--        android:text="Menu"-->
-<!--        android:gravity="center"-->
-<!--        android:textSize="64sp"/>-->
-
-    <RelativeLayout
-        android:layout_width="300dp"
-        android:layout_height="400dp"
-        android:id="@+id/rr">
-
-    </RelativeLayout>
+    <TextView
+        android:id="@+id/menuTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="5"
+        android:text="Menu"
+        android:gravity="center"
+        android:textSize="64sp"/>
 
     <Button
         android:id="@+id/choicePointButton"
