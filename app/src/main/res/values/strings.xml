@@ -1,5 +1,9 @@
 <resources>
     <string name="app_name">FACT application</string>
+    <string name="left_side_text">left side text</string>
+    <string name="right_side_text">right side text</string>
+    <string name="current_text">current text</string>
+    <string name="current_scenario">Current Scenario</string>
     <string-array name="values_array">
         <item>Mercury</item>
         <item>Venus</item>
