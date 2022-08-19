@@ -41,7 +41,8 @@
                 android:paddingEnd="16dp"
                 android:text="@string/left_side_text"
                 android:textAlignment="center"
-                android:textSize="36sp" />
+                android:textSize="36sp"
+                android:textColor="@color/black"/>
 
             <TextView
                 android:id="@+id/choicepointRightSideText"
@@ -51,7 +52,8 @@
                 android:paddingStart="16dp"
                 android:text="@string/right_side_text"
                 android:textAlignment="center"
-                android:textSize="36sp" />
+                android:textSize="36sp"
+                android:textColor="@color/black" />
         </LinearLayout>
 
         <TextView
@@ -63,7 +65,8 @@
             android:paddingTop="96dp"
             android:text="@string/current_text"
             android:textAlignment="center"
-            android:textSize="36sp" />
+            android:textSize="36sp"
+            android:textColor="@color/black"/>
 
         <TextView
             android:id="@+id/choicePointValueText"
@@ -93,10 +96,13 @@
             android:layout_alignParentBottom="true"
             android:layout_marginLeft="40dp"
             android:layout_marginRight="40dp"
-            android:paddingBottom="72dp"
+            android:layout_marginBottom="72dp"
             android:text="@string/current_scenario"
             android:textAlignment="center"
-            android:textSize="36sp" />
+            android:textSize="36sp"
+            android:textColor="@color/black"
+            android:background="#59FFFFFF"
+            />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -116,7 +122,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="16sp"
                 android:text="Edit"
-                android:onClick="editChoicepointText"/>
+                android:onClick="showEditTextPopup"/>
         </LinearLayout>
 
         <androidx.cardview.widget.CardView
@@ -125,6 +131,7 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             app:cardCornerRadius="8dp"
+            android:visibility="invisible"
             >
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -167,6 +174,189 @@
 
 
         </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/editTextPopup"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            app:cardCornerRadius="8dp"
+            android:layout_marginLeft="32dp"
+            android:layout_marginRight="32dp"
+            android:visibility="invisible"
+            >
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Edit"
+                    android:layout_gravity="center"
+                    android:textAlignment="center"
+                    android:textSize="36sp"
+                    android:paddingTop="32dp"
+                    android:paddingLeft="32dp"
+                    android:paddingRight="32dp"/>
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingTop="16dp"
+                    android:paddingBottom="16dp"
+                    >
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Situation:"
+                        android:layout_gravity="center"
+                        android:textAlignment="center"
+                        android:textSize="16sp"
+                        android:paddingLeft="32dp"
+                        android:paddingRight="8dp"/>
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="16dp"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingTop="16dp"
+                    android:paddingBottom="16dp"
+                    >
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Away:"
+                        android:layout_gravity="center"
+                        android:textAlignment="center"
+                        android:textSize="16sp"
+                        android:paddingLeft="32dp"
+                        android:paddingRight="8dp"/>
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="16dp"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingTop="16dp"
+                    android:paddingBottom="16dp"
+                    >
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Towards:"
+                        android:layout_gravity="center"
+                        android:textAlignment="center"
+                        android:textSize="16sp"
+                        android:paddingLeft="32dp"
+                        android:paddingRight="8dp"/>
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="16dp"/>
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingTop="16dp"
+                    android:paddingBottom="16dp"
+                    >
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Strategies:"
+                        android:layout_gravity="center"
+                        android:textAlignment="center"
+                        android:textSize="16sp"
+                        android:paddingLeft="32dp"
+                        android:paddingRight="8dp"/>
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="16dp"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingTop="16dp"
+                    android:paddingBottom="16dp"
+                    >
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Values:"
+                        android:layout_gravity="center"
+                        android:textAlignment="center"
+                        android:textSize="16sp"
+                        android:paddingLeft="32dp"
+                        android:paddingRight="8dp"/>
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="16dp"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingTop="16dp"
+                    android:paddingBottom="16dp"
+                    >
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Difficult feelings:"
+                        android:layout_gravity="center"
+                        android:textAlignment="center"
+                        android:textSize="16sp"
+                        android:paddingLeft="32dp"
+                        android:paddingRight="8dp"/>
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="16dp"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingTop="16dp"
+                    android:paddingBottom="16dp"
+                    >
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Cancel"
+                        android:layout_weight="1"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginRight="16dp"
+                        android:onClick="hideEditTextPopup"/>
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Save"
+                        android:layout_weight="1"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginRight="16dp"
+                        android:onClick="hideEditTextPopup"/>
+                </LinearLayout>
+            </LinearLayout>
+
+
+        </androidx.cardview.widget.CardView>
+
+
 
     </RelativeLayout>
 
