@@ -25,7 +25,7 @@ public class ChoicepointActivity extends AppCompatActivity {
         View choicePointView;
         TextView scenarioText, currentText, leftText, rightText,
         valueText1, valueText2;
-        CardView exitConfirmPopup;
+        CardView exitConfirmPopup, editTextPopup;
 
         public ViewHolder() {
             backgroundImage = findViewById(R.id.choicePointBackground);
@@ -37,6 +37,7 @@ public class ChoicepointActivity extends AppCompatActivity {
             valueText1 = findViewById(R.id.choicePointValueText);
             valueText2 = findViewById(R.id.choicePointValueText2);
             exitConfirmPopup = findViewById(R.id.exitConfirmPopup);
+            editTextPopup = findViewById(R.id.editTextPopup);
         }
     }
 
@@ -81,6 +82,7 @@ public class ChoicepointActivity extends AppCompatActivity {
         vh.valueText1.setVisibility(View.INVISIBLE);
         vh.valueText2.setVisibility(View.INVISIBLE);
         vh.exitConfirmPopup.setVisibility(View.INVISIBLE);
+        vh.editTextPopup.setVisibility(View.INVISIBLE);
     }
 
     private void goToRightScreen() {
@@ -136,7 +138,11 @@ public class ChoicepointActivity extends AppCompatActivity {
         vh.exitConfirmPopup.setVisibility(View.VISIBLE);
     }
 
-    public void editChoicepointText(View view) {
-        System.out.println("Edit choicepoint text");
+    public void showEditTextPopup(View view) {
+        vh.editTextPopup.setVisibility(View.VISIBLE);
+    }
+
+    public void hideEditTextPopup(View view) {
+        vh.editTextPopup.setVisibility(View.INVISIBLE);
     }
 }
