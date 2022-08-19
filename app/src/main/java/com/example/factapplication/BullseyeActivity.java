@@ -20,20 +20,32 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 
 import java.util.ArrayList;
 
 public class BullseyeActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
 
+    private ViewHolder vh;
     String currentValue = "";
     int spinnerCounter = 0;
+
+    private class ViewHolder {
+        CardView exitConfirmPopup;
+
+        public ViewHolder() {
+            exitConfirmPopup = findViewById(R.id.exitConfirmPopup2);
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bullseye);
-
+        vh = new ViewHolder();
+        vh.exitConfirmPopup.setVisibility(View.INVISIBLE);
         Spinner spinner = (Spinner) findViewById(R.id.spinner);
+
         ArrayList<String> items = new ArrayList<>();
         items.add("value1");
         items.add("value2");
@@ -118,5 +130,17 @@ public class BullseyeActivity extends AppCompatActivity implements AdapterView.O
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
         // TODO Auto-generated method stub
+    }
+
+    public void hideConfirmationPopup(View view) {
+        vh.exitConfirmPopup.setVisibility(View.INVISIBLE);
+    }
+
+    public void showConfirmationPopup(View view) {
+        vh.exitConfirmPopup.setVisibility(View.VISIBLE);
+    }
+
+    public void goBack(View view) {
+        finish();
     }
 }

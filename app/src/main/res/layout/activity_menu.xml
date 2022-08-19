@@ -4,35 +4,30 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     tools:context=".MenuActivity"
     android:orientation="vertical"
-    android:layout_margin="16dp">
+    android:layout_margin="16dp"
+    android:layout_marginTop="50dp">
 
-    <TextView
-        android:id="@+id/menuTitle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="5"
-        android:text="Menu"
-        android:gravity="center"
-        android:textSize="64sp"/>
 
     <Button
         android:id="@+id/choicePointButton"
         android:layout_width="match_parent"
-        android:layout_height="0sp"
+        android:layout_height="wrap_content"
         android:layout_weight="1"
         android:text="Choice point"
         android:gravity="center"
         android:layout_margin="16dp"
-        android:onClick="goToChoicepoint"/>
+        android:onClick="goToChoicepoint"
+        />
 
     <Button
         android:id="@+id/bullseyeButton"
         android:layout_width="match_parent"
-        android:layout_height="0sp"
+        android:layout_height="wrap_content"
         android:layout_weight="1"
+        android:maxHeight="50dp"
         android:text="Bullseye"
         android:gravity="center"
         android:layout_margin="16dp" />
