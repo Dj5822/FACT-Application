@@ -96,8 +96,8 @@ public class ChoicepointActivity extends AppCompatActivity {
         vh.valueText2.setVisibility(View.VISIBLE);
         vh.valueText1.setText("Health");
         vh.valueText2.setText("Family");
-        vh.valueText1.setTextColor(Color.parseColor("#4dc33b"));
-        vh.valueText2.setTextColor(Color.parseColor("#4dc33b"));
+        vh.valueText1.setTextColor(Color.parseColor("#127a1e"));
+        vh.valueText2.setTextColor(Color.parseColor("#127a1e"));
     }
 
     private void goToLeftScreen() {
