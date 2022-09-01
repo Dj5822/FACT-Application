@@ -29,7 +29,7 @@ public class ChoicepointActivity extends AppCompatActivity {
         valueText1, valueText2;
         CardView exitConfirmPopup;
 
-        CardView awayMoveEdit, towardsMoveEdit, scenarioEdit;
+        CardView awayMoveEdit, towardsMoveEdit, scenarioEdit, currentTextEdit, valuesTextEdit;
         Button editButton;
 
         public ViewHolder() {
@@ -45,6 +45,8 @@ public class ChoicepointActivity extends AppCompatActivity {
             awayMoveEdit = findViewById(R.id.awayMoveEdit);
             towardsMoveEdit = findViewById(R.id.towardsMoveEdit);
             scenarioEdit = findViewById(R.id.scenarioEdit);
+            currentTextEdit = findViewById(R.id.choicepointCurrentTextEdit);
+            valuesTextEdit = findViewById(R.id.choicepointValuesTextEdit);
             editButton = findViewById(R.id.editButton);
         }
     }
@@ -90,6 +92,8 @@ public class ChoicepointActivity extends AppCompatActivity {
         vh.valueText1.setVisibility(View.INVISIBLE);
         vh.valueText2.setVisibility(View.INVISIBLE);
         vh.exitConfirmPopup.setVisibility(View.INVISIBLE);
+        vh.currentTextEdit.setVisibility(View.INVISIBLE);
+        vh.valuesTextEdit.setVisibility(View.INVISIBLE);
     }
 
     private void goToRightScreen() {
@@ -105,6 +109,9 @@ public class ChoicepointActivity extends AppCompatActivity {
         vh.valueText2.setText("Family");
         vh.valueText1.setTextColor(Color.parseColor("#127a1e"));
         vh.valueText2.setTextColor(Color.parseColor("#127a1e"));
+        if (editing) {
+            editText();
+        }
     }
 
     private void goToLeftScreen() {
@@ -120,6 +127,9 @@ public class ChoicepointActivity extends AppCompatActivity {
         vh.valueText2.setText("I'm weak");
         vh.valueText1.setTextColor(Color.RED);
         vh.valueText2.setTextColor(Color.RED);
+        if (editing) {
+            editText();
+        }
     }
 
     private void goToCenterScreen() {
@@ -130,6 +140,9 @@ public class ChoicepointActivity extends AppCompatActivity {
         vh.backgroundImage.setImageResource(R.drawable.choice_point_background_center);
         vh.valueText1.setVisibility(View.INVISIBLE);
         vh.valueText2.setVisibility(View.INVISIBLE);
+        if (editing) {
+            editText();
+        }
     }
 
     public void goBack(View view) {
@@ -154,6 +167,9 @@ public class ChoicepointActivity extends AppCompatActivity {
 
         vh.rightText.setVisibility(View.INVISIBLE);
         vh.towardsMoveEdit.setVisibility(View.VISIBLE);
+
+        vh.currentTextEdit.setVisibility(View.INVISIBLE);
+        vh.valuesTextEdit.setVisibility(View.INVISIBLE);
     }
 
     public void saveCenterScreen() {
@@ -165,16 +181,91 @@ public class ChoicepointActivity extends AppCompatActivity {
 
         vh.rightText.setVisibility(View.VISIBLE);
         vh.towardsMoveEdit.setVisibility(View.INVISIBLE);
+
+        vh.currentTextEdit.setVisibility(View.INVISIBLE);
+        vh.valuesTextEdit.setVisibility(View.INVISIBLE);
+    }
+
+    public void editLeftScreen() {
+        vh.scenarioText.setVisibility(View.VISIBLE);
+        vh.scenarioEdit.setVisibility(View.VISIBLE);
+
+        vh.leftText.setVisibility(View.INVISIBLE);
+        vh.awayMoveEdit.setVisibility(View.INVISIBLE);
+
+        vh.rightText.setVisibility(View.INVISIBLE);
+        vh.towardsMoveEdit.setVisibility(View.INVISIBLE);
+
+        vh.currentTextEdit.setVisibility(View.VISIBLE);
+        vh.valuesTextEdit.setVisibility(View.VISIBLE);
+    }
+
+    public void saveLeftScreen() {
+        vh.scenarioText.setVisibility(View.INVISIBLE);
+        vh.scenarioEdit.setVisibility(View.INVISIBLE);
+
+        vh.leftText.setVisibility(View.INVISIBLE);
+        vh.awayMoveEdit.setVisibility(View.INVISIBLE);
+
+        vh.rightText.setVisibility(View.INVISIBLE);
+        vh.towardsMoveEdit.setVisibility(View.INVISIBLE);
+
+        vh.currentTextEdit.setVisibility(View.INVISIBLE);
+        vh.valuesTextEdit.setVisibility(View.INVISIBLE);
+    }
+
+    public void editRightScreen() {
+        vh.scenarioText.setVisibility(View.VISIBLE);
+        vh.scenarioEdit.setVisibility(View.VISIBLE);
+
+        vh.leftText.setVisibility(View.INVISIBLE);
+        vh.awayMoveEdit.setVisibility(View.INVISIBLE);
+
+        vh.rightText.setVisibility(View.INVISIBLE);
+        vh.towardsMoveEdit.setVisibility(View.INVISIBLE);
+
+        vh.currentTextEdit.setVisibility(View.VISIBLE);
+        vh.valuesTextEdit.setVisibility(View.VISIBLE);
+    }
+
+    public void saveRightScreen() {
+        vh.scenarioText.setVisibility(View.INVISIBLE);
+        vh.scenarioEdit.setVisibility(View.INVISIBLE);
+
+        vh.leftText.setVisibility(View.INVISIBLE);
+        vh.awayMoveEdit.setVisibility(View.INVISIBLE);
+
+        vh.rightText.setVisibility(View.INVISIBLE);
+        vh.towardsMoveEdit.setVisibility(View.INVISIBLE);
+
+        vh.currentTextEdit.setVisibility(View.INVISIBLE);
+        vh.valuesTextEdit.setVisibility(View.INVISIBLE);
     }
 
     public void editText() {
         vh.editButton.setText("save");
-        editCenterScreen();
+        if (position == "center") {
+            editCenterScreen();
+        }
+        else if (position == "left") {
+            editLeftScreen();
+        }
+        else if (position == "right") {
+            editRightScreen();
+        }
     }
 
     public void saveText() {
         vh.editButton.setText("edit");
-        saveCenterScreen();
+        if (position == "center") {
+            saveCenterScreen();
+        }
+        else if (position == "left") {
+            saveLeftScreen();
+        }
+        else if (position == "right") {
+            saveRightScreen();
+        }
     }
 
     public void toggleEditButton(View view) {
