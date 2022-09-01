@@ -144,7 +144,7 @@
             android:textSize="36sp" />
 
         <androidx.cardview.widget.CardView
-            android:id="@+id/choicepointCurrentTextEdit"
+            android:id="@+id/choicepointCurrentTextEditCard"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
@@ -158,6 +158,7 @@
             android:layout_marginRight="16dp">
 
             <TextView
+                android:id="@+id/choicePointCurrentTextEdit"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:text="unknown move"
@@ -195,7 +196,7 @@
             android:textSize="36sp" />
 
         <androidx.cardview.widget.CardView
-            android:id="@+id/choicepointValuesTextEdit"
+            android:id="@+id/choicepointValuesTextEditCard"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
@@ -209,6 +210,7 @@
                 android:orientation="vertical">
 
                 <TextView
+                    android:id="@+id/choicepointValuesTextEdit"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:text="Values (Separate using commas)"

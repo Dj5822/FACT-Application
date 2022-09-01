@@ -29,7 +29,8 @@ public class ChoicepointActivity extends AppCompatActivity {
         valueText1, valueText2;
         CardView exitConfirmPopup;
 
-        CardView awayMoveEdit, towardsMoveEdit, scenarioEdit, currentTextEdit, valuesTextEdit;
+        CardView awayMoveEdit, towardsMoveEdit, scenarioEdit, currentTextEditCard, valuesTextEditCard;
+        TextView currentTextEdit, valuesTextEdit;
         Button editButton;
 
         public ViewHolder() {
@@ -45,7 +46,9 @@ public class ChoicepointActivity extends AppCompatActivity {
             awayMoveEdit = findViewById(R.id.awayMoveEdit);
             towardsMoveEdit = findViewById(R.id.towardsMoveEdit);
             scenarioEdit = findViewById(R.id.scenarioEdit);
-            currentTextEdit = findViewById(R.id.choicepointCurrentTextEdit);
+            currentTextEditCard = findViewById(R.id.choicepointCurrentTextEditCard);
+            currentTextEdit = findViewById(R.id.choicePointCurrentTextEdit);
+            valuesTextEditCard = findViewById(R.id.choicepointValuesTextEditCard);
             valuesTextEdit = findViewById(R.id.choicepointValuesTextEdit);
             editButton = findViewById(R.id.editButton);
         }
@@ -92,8 +95,8 @@ public class ChoicepointActivity extends AppCompatActivity {
         vh.valueText1.setVisibility(View.INVISIBLE);
         vh.valueText2.setVisibility(View.INVISIBLE);
         vh.exitConfirmPopup.setVisibility(View.INVISIBLE);
-        vh.currentTextEdit.setVisibility(View.INVISIBLE);
-        vh.valuesTextEdit.setVisibility(View.INVISIBLE);
+        vh.currentTextEditCard.setVisibility(View.INVISIBLE);
+        vh.valuesTextEditCard.setVisibility(View.INVISIBLE);
     }
 
     private void goToRightScreen() {
@@ -168,8 +171,8 @@ public class ChoicepointActivity extends AppCompatActivity {
         vh.rightText.setVisibility(View.INVISIBLE);
         vh.towardsMoveEdit.setVisibility(View.VISIBLE);
 
-        vh.currentTextEdit.setVisibility(View.INVISIBLE);
-        vh.valuesTextEdit.setVisibility(View.INVISIBLE);
+        vh.currentTextEditCard.setVisibility(View.INVISIBLE);
+        vh.valuesTextEditCard.setVisibility(View.INVISIBLE);
     }
 
     public void saveCenterScreen() {
@@ -182,8 +185,8 @@ public class ChoicepointActivity extends AppCompatActivity {
         vh.rightText.setVisibility(View.VISIBLE);
         vh.towardsMoveEdit.setVisibility(View.INVISIBLE);
 
-        vh.currentTextEdit.setVisibility(View.INVISIBLE);
-        vh.valuesTextEdit.setVisibility(View.INVISIBLE);
+        vh.currentTextEditCard.setVisibility(View.INVISIBLE);
+        vh.valuesTextEditCard.setVisibility(View.INVISIBLE);
     }
 
     public void editLeftScreen() {
@@ -196,8 +199,12 @@ public class ChoicepointActivity extends AppCompatActivity {
         vh.rightText.setVisibility(View.INVISIBLE);
         vh.towardsMoveEdit.setVisibility(View.INVISIBLE);
 
-        vh.currentTextEdit.setVisibility(View.VISIBLE);
-        vh.valuesTextEdit.setVisibility(View.VISIBLE);
+        vh.currentTextEditCard.setVisibility(View.VISIBLE);
+        vh.valuesTextEditCard.setVisibility(View.VISIBLE);
+
+        vh.currentTextEdit.setText("Away move");
+        vh.valuesTextEdit.setText("Thoughts and feelings (Separate using commas)");
+
     }
 
     public void saveLeftScreen() {
@@ -210,8 +217,8 @@ public class ChoicepointActivity extends AppCompatActivity {
         vh.rightText.setVisibility(View.INVISIBLE);
         vh.towardsMoveEdit.setVisibility(View.INVISIBLE);
 
-        vh.currentTextEdit.setVisibility(View.INVISIBLE);
-        vh.valuesTextEdit.setVisibility(View.INVISIBLE);
+        vh.currentTextEditCard.setVisibility(View.INVISIBLE);
+        vh.valuesTextEditCard.setVisibility(View.INVISIBLE);
     }
 
     public void editRightScreen() {
@@ -224,8 +231,13 @@ public class ChoicepointActivity extends AppCompatActivity {
         vh.rightText.setVisibility(View.INVISIBLE);
         vh.towardsMoveEdit.setVisibility(View.INVISIBLE);
 
-        vh.currentTextEdit.setVisibility(View.VISIBLE);
-        vh.valuesTextEdit.setVisibility(View.VISIBLE);
+        vh.currentTextEditCard.setVisibility(View.VISIBLE);
+        vh.valuesTextEditCard.setVisibility(View.VISIBLE);
+
+        vh.currentTextEdit.setText("Towards move");
+        vh.valuesTextEdit.setText("Values (Separate using commas)");
+
+
     }
 
     public void saveRightScreen() {
@@ -238,8 +250,8 @@ public class ChoicepointActivity extends AppCompatActivity {
         vh.rightText.setVisibility(View.INVISIBLE);
         vh.towardsMoveEdit.setVisibility(View.INVISIBLE);
 
-        vh.currentTextEdit.setVisibility(View.INVISIBLE);
-        vh.valuesTextEdit.setVisibility(View.INVISIBLE);
+        vh.currentTextEditCard.setVisibility(View.INVISIBLE);
+        vh.valuesTextEditCard.setVisibility(View.INVISIBLE);
     }
 
     public void editText() {
