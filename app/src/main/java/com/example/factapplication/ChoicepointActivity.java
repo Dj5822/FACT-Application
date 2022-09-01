@@ -24,6 +24,9 @@ public class ChoicepointActivity extends AppCompatActivity {
     private String leftChoice = "";
     private String rightChoice = "";
     private String scenario = "";
+    private String strategies = "";
+    private String thoughtsAndFeelings = "";
+    private String values = "";
 
     private ViewHolder vh;
 
@@ -44,7 +47,8 @@ public class ChoicepointActivity extends AppCompatActivity {
         TextView currentTextEdit, valuesTextEdit;
 
         // Text Input fields.
-        TextInputEditText scenarioTextField, awayTextField, towardsTextField, centerTextField;
+        TextInputEditText scenarioTextField, awayTextField, towardsTextField, centerTextField,
+                valuesTextField, strategiesTextField;
 
         public ViewHolder() {
             backgroundImage = findViewById(R.id.choicePointBackground);
@@ -76,6 +80,8 @@ public class ChoicepointActivity extends AppCompatActivity {
             awayTextField = findViewById(R.id.choicePointAwayTextField);
             towardsTextField = findViewById(R.id.choicePointTowardsTextField);
             centerTextField = findViewById(R.id.choicePointCenterTextField);
+            valuesTextField = findViewById(R.id.choicePointValuesTextField);
+            strategiesTextField = findViewById(R.id.choicePointStrategiesTextField);
         }
     }
 
@@ -120,24 +126,40 @@ public class ChoicepointActivity extends AppCompatActivity {
 
     private void updateText() {
         scenario = vh.scenarioTextField.getText().toString();
-        leftChoice = vh.awayTextField.getText().toString();
-        rightChoice = vh.towardsTextField.getText().toString();
-        vh.scenarioText.setText(scenario);
+        if (position == "center") {
+            leftChoice = vh.awayTextField.getText().toString();
+            rightChoice = vh.towardsTextField.getText().toString();
+        }
+        else if (position == "left") {
+            leftChoice = vh.centerTextField.getText().toString();
+            thoughtsAndFeelings = vh.valuesTextField.getText().toString();
+        }
+        else if (position == "right") {
+            rightChoice = vh.centerTextField.getText().toString();
+            values = vh.valuesTextField.getText().toString();
+        }
+        strategies = vh.strategiesTextField.getText().toString();
+    }
+
+    private void updateTextFields() {
+        vh.scenarioTextField.setText(scenario);
         vh.awayTextField.setText(leftChoice);
-        vh.leftText.setText(leftChoice);
         vh.towardsTextField.setText(rightChoice);
-        vh.rightText.setText(rightChoice);
         if (position == "left") {
             vh.centerTextField.setText(leftChoice);
+            vh.valuesTextField.setText(thoughtsAndFeelings);
         }
         else if (position == "right") {
             vh.centerTextField.setText(rightChoice);
+            vh.valuesTextField.setText(values);
         }
+        vh.strategiesTextField.setText(strategies);
     }
 
     // RIGHT
 
     private void goToRightScreen() {
+        updateText();
         position = "right";
         vh.currentText.setText(rightChoice);
         vh.currentText.setVisibility(View.VISIBLE);
@@ -155,7 +177,7 @@ public class ChoicepointActivity extends AppCompatActivity {
         }
     }
 
-    public void editRightScreen() {
+    private void editRightScreen() {
         vh.scenarioText.setVisibility(View.VISIBLE);
         vh.scenarioEdit.setVisibility(View.VISIBLE);
 
@@ -174,7 +196,7 @@ public class ChoicepointActivity extends AppCompatActivity {
 
     }
 
-    public void saveRightScreen() {
+    private void saveRightScreen() {
         vh.scenarioText.setVisibility(View.VISIBLE);
         vh.scenarioEdit.setVisibility(View.INVISIBLE);
 
@@ -188,9 +210,12 @@ public class ChoicepointActivity extends AppCompatActivity {
         vh.valuesTextEditCard.setVisibility(View.INVISIBLE);
     }
 
+
+
     // LEFT
 
     private void goToLeftScreen() {
+        updateText();
         position = "left";
         vh.currentText.setText(leftChoice);
         vh.currentText.setVisibility(View.VISIBLE);
@@ -208,7 +233,7 @@ public class ChoicepointActivity extends AppCompatActivity {
         }
     }
 
-    public void editLeftScreen() {
+    private void editLeftScreen() {
         vh.scenarioText.setVisibility(View.VISIBLE);
         vh.scenarioEdit.setVisibility(View.VISIBLE);
 
@@ -226,7 +251,7 @@ public class ChoicepointActivity extends AppCompatActivity {
 
     }
 
-    public void saveLeftScreen() {
+    private void saveLeftScreen() {
         vh.scenarioText.setVisibility(View.VISIBLE);
         vh.scenarioEdit.setVisibility(View.INVISIBLE);
 
@@ -243,6 +268,7 @@ public class ChoicepointActivity extends AppCompatActivity {
     // CENTER
 
     private void goToCenterScreen() {
+        updateText();
         position = "center";
         vh.currentText.setVisibility(View.INVISIBLE);
         vh.leftText.setVisibility(View.VISIBLE);
@@ -255,7 +281,7 @@ public class ChoicepointActivity extends AppCompatActivity {
         }
     }
 
-    public void editCenterScreen() {
+    private void editCenterScreen() {
         vh.scenarioText.setVisibility(View.INVISIBLE);
         vh.scenarioEdit.setVisibility(View.VISIBLE);
 
@@ -269,7 +295,7 @@ public class ChoicepointActivity extends AppCompatActivity {
         vh.valuesTextEditCard.setVisibility(View.INVISIBLE);
     }
 
-    public void saveCenterScreen() {
+    private void saveCenterScreen() {
         vh.scenarioText.setVisibility(View.VISIBLE);
         vh.scenarioEdit.setVisibility(View.INVISIBLE);
 
@@ -295,8 +321,8 @@ public class ChoicepointActivity extends AppCompatActivity {
         editing = !editing;
     }
 
-    public void editText() {
-        updateText();
+    private void editText() {
+        updateTextFields();
         vh.editButton.setText("save");
         if (position == "center") {
             editCenterScreen();
@@ -309,7 +335,7 @@ public class ChoicepointActivity extends AppCompatActivity {
         }
     }
 
-    public void saveText() {
+    private void saveText() {
         updateText();
         vh.editButton.setText("edit");
         if (position == "center") {
