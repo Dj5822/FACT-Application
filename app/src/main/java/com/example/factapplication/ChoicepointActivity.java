@@ -156,6 +156,22 @@ public class ChoicepointActivity extends AppCompatActivity {
         vh.strategiesTextField.setText(strategies);
     }
 
+    private void updateDisplay() {
+        vh.leftText.setText(leftChoice);
+        vh.rightText.setText(rightChoice);
+        vh.scenarioText.setText(scenario);
+        if (position == "left") {
+            vh.currentText.setText(leftChoice);
+            vh.valueText1.setText(thoughtsAndFeelings);
+            vh.valueText2.setText(strategies);
+        }
+        else if (position == "right") {
+            vh.currentText.setText(rightChoice);
+            vh.valueText1.setText(values);
+            vh.valueText2.setText(strategies);
+        }
+    }
+
     // RIGHT
 
     private void goToRightScreen() {
@@ -168,8 +184,8 @@ public class ChoicepointActivity extends AppCompatActivity {
         vh.backgroundImage.setImageResource(R.drawable.choice_point_background_right);
         vh.valueText1.setVisibility(View.VISIBLE);
         vh.valueText2.setVisibility(View.VISIBLE);
-        vh.valueText1.setText("Health");
-        vh.valueText2.setText("Family");
+        vh.valueText1.setText(values);
+        vh.valueText2.setText(strategies);
         vh.valueText1.setTextColor(Color.parseColor("#127a1e"));
         vh.valueText2.setTextColor(Color.parseColor("#127a1e"));
         if (editing) {
@@ -224,8 +240,8 @@ public class ChoicepointActivity extends AppCompatActivity {
         vh.backgroundImage.setImageResource(R.drawable.choice_point_background_left);
         vh.valueText1.setVisibility(View.VISIBLE);
         vh.valueText2.setVisibility(View.VISIBLE);
-        vh.valueText1.setText("I'm stressed so it's ok");
-        vh.valueText2.setText("I'm weak");
+        vh.valueText1.setText(thoughtsAndFeelings);
+        vh.valueText2.setText(strategies);
         vh.valueText1.setTextColor(Color.RED);
         vh.valueText2.setTextColor(Color.RED);
         if (editing) {
@@ -337,6 +353,7 @@ public class ChoicepointActivity extends AppCompatActivity {
 
     private void saveText() {
         updateText();
+        updateDisplay();
         vh.editButton.setText("edit");
         if (position == "center") {
             saveCenterScreen();
