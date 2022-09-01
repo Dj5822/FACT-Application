@@ -201,7 +201,7 @@ public class ChoicepointActivity extends AppCompatActivity {
     }
 
     public void saveLeftScreen() {
-        vh.scenarioText.setVisibility(View.INVISIBLE);
+        vh.scenarioText.setVisibility(View.VISIBLE);
         vh.scenarioEdit.setVisibility(View.INVISIBLE);
 
         vh.leftText.setVisibility(View.INVISIBLE);
@@ -229,7 +229,7 @@ public class ChoicepointActivity extends AppCompatActivity {
     }
 
     public void saveRightScreen() {
-        vh.scenarioText.setVisibility(View.INVISIBLE);
+        vh.scenarioText.setVisibility(View.VISIBLE);
         vh.scenarioEdit.setVisibility(View.INVISIBLE);
 
         vh.leftText.setVisibility(View.INVISIBLE);
