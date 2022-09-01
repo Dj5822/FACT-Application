@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -15,6 +16,7 @@ public class ChoicepointActivity extends AppCompatActivity {
 
     private ViewHolder vh;
     private String position;
+    private boolean editing = true;
 
     private final String leftChoice = "Buy whiskey";
     private final String rightChoice = "Keep walking";
@@ -25,7 +27,10 @@ public class ChoicepointActivity extends AppCompatActivity {
         View choicePointView;
         TextView scenarioText, currentText, leftText, rightText,
         valueText1, valueText2;
-        CardView exitConfirmPopup, editTextPopup;
+        CardView exitConfirmPopup;
+
+        CardView awayMoveEdit, towardsMoveEdit, scenarioEdit;
+        Button editButton;
 
         public ViewHolder() {
             backgroundImage = findViewById(R.id.choicePointBackground);
@@ -37,7 +42,10 @@ public class ChoicepointActivity extends AppCompatActivity {
             valueText1 = findViewById(R.id.choicePointValueText);
             valueText2 = findViewById(R.id.choicePointValueText2);
             exitConfirmPopup = findViewById(R.id.exitConfirmPopup);
-            editTextPopup = findViewById(R.id.editTextPopup);
+            awayMoveEdit = findViewById(R.id.awayMoveEdit);
+            towardsMoveEdit = findViewById(R.id.towardsMoveEdit);
+            scenarioEdit = findViewById(R.id.scenarioEdit);
+            editButton = findViewById(R.id.editButton);
         }
     }
 
@@ -82,7 +90,6 @@ public class ChoicepointActivity extends AppCompatActivity {
         vh.valueText1.setVisibility(View.INVISIBLE);
         vh.valueText2.setVisibility(View.INVISIBLE);
         vh.exitConfirmPopup.setVisibility(View.INVISIBLE);
-        vh.editTextPopup.setVisibility(View.INVISIBLE);
     }
 
     private void goToRightScreen() {
@@ -138,11 +145,45 @@ public class ChoicepointActivity extends AppCompatActivity {
         vh.exitConfirmPopup.setVisibility(View.VISIBLE);
     }
 
-    public void showEditTextPopup(View view) {
-        vh.editTextPopup.setVisibility(View.VISIBLE);
+    public void editCenterScreen() {
+        vh.scenarioText.setVisibility(View.INVISIBLE);
+        vh.scenarioEdit.setVisibility(View.VISIBLE);
+
+        vh.leftText.setVisibility(View.INVISIBLE);
+        vh.awayMoveEdit.setVisibility(View.VISIBLE);
+
+        vh.rightText.setVisibility(View.INVISIBLE);
+        vh.towardsMoveEdit.setVisibility(View.VISIBLE);
     }
 
-    public void hideEditTextPopup(View view) {
-        vh.editTextPopup.setVisibility(View.INVISIBLE);
+    public void saveCenterScreen() {
+        vh.scenarioText.setVisibility(View.VISIBLE);
+        vh.scenarioEdit.setVisibility(View.INVISIBLE);
+
+        vh.leftText.setVisibility(View.VISIBLE);
+        vh.awayMoveEdit.setVisibility(View.INVISIBLE);
+
+        vh.rightText.setVisibility(View.VISIBLE);
+        vh.towardsMoveEdit.setVisibility(View.INVISIBLE);
+    }
+
+    public void editText() {
+        vh.editButton.setText("save");
+        editCenterScreen();
+    }
+
+    public void saveText() {
+        vh.editButton.setText("edit");
+        saveCenterScreen();
+    }
+
+    public void toggleEditButton(View view) {
+        if (editing) {
+            saveText();
+        }
+        else {
+            editText();
+        }
+        editing = !editing;
     }
 }
