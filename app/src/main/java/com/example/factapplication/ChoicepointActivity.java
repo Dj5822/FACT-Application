@@ -157,9 +157,10 @@ public class ChoicepointActivity extends AppCompatActivity {
     }
 
     private void updateDisplay() {
+        vh.scenarioText.setText(scenario);
         vh.leftText.setText(leftChoice);
         vh.rightText.setText(rightChoice);
-        vh.scenarioText.setText(scenario);
+
         if (position == "left") {
             vh.currentText.setText(leftChoice);
             vh.valueText1.setText(thoughtsAndFeelings);
@@ -175,7 +176,7 @@ public class ChoicepointActivity extends AppCompatActivity {
     // RIGHT
 
     private void goToRightScreen() {
-        updateText();
+        if (editing) updateText();
         position = "right";
         vh.currentText.setText(rightChoice);
         vh.currentText.setVisibility(View.VISIBLE);
@@ -231,7 +232,7 @@ public class ChoicepointActivity extends AppCompatActivity {
     // LEFT
 
     private void goToLeftScreen() {
-        updateText();
+        if (editing) updateText();
         position = "left";
         vh.currentText.setText(leftChoice);
         vh.currentText.setVisibility(View.VISIBLE);
@@ -284,7 +285,7 @@ public class ChoicepointActivity extends AppCompatActivity {
     // CENTER
 
     private void goToCenterScreen() {
-        updateText();
+        if (editing) updateText();
         position = "center";
         vh.currentText.setVisibility(View.INVISIBLE);
         vh.leftText.setVisibility(View.VISIBLE);
