@@ -74,8 +74,10 @@ public class ChoicepointActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if (editing) {
+                    editButton.setImageResource(R.drawable.ic_baseline_done_24);
                     sectionsPagerAdapter.switchToText();
                 } else {
+                    editButton.setImageResource(R.drawable.ic_baseline_edit_24);
                     sectionsPagerAdapter.switchToEdit();
                 }
                 editing = !editing;
