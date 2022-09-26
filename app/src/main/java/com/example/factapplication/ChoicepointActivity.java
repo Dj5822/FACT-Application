@@ -22,20 +22,20 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.example.factapplication.ui.choicepoint.SectionsPagerAdapter;
-import com.example.factapplication.databinding.ActivityMainBinding;
+import com.example.factapplication.databinding.ActivityChoicepointMainBinding;
 
 import com.google.android.material.textfield.TextInputEditText;
 
 public class ChoicepointActivity extends AppCompatActivity {
 
-    private ActivityMainBinding binding;
+    private ActivityChoicepointMainBinding binding;
 
     // Entry point
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        binding = ActivityMainBinding.inflate(getLayoutInflater());
+        binding = ActivityChoicepointMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
         SectionsPagerAdapter sectionsPagerAdapter = new SectionsPagerAdapter(this, getSupportFragmentManager());
