@@ -5,9 +5,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ChoicepointActivity"
     android:orientation="vertical"
-    android:id="@+id/choicePointView">
+    android:id="@+id/choicePointView"
+    tools:context=".ui.choicepoint.TowardsFragment">
 
     <ImageView
         android:id="@+id/choicePointBackground"

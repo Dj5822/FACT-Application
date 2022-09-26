@@ -12,7 +12,7 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.example.factapplication.databinding.FragmentMainBinding;
+import com.example.factapplication.databinding.ActivityChoicepointLeftBinding;
 
 /**
  * A placeholder fragment containing a simple view.
@@ -22,7 +22,7 @@ public class TowardsFragment extends Fragment {
     private static final String ARG_SECTION_NUMBER = "section_number";
 
     private PageViewModel pageViewModel;
-    private FragmentMainBinding binding;
+    private ActivityChoicepointLeftBinding binding;
 
     public static TowardsFragment newInstance() {
         TowardsFragment fragment = new TowardsFragment();
@@ -48,16 +48,9 @@ public class TowardsFragment extends Fragment {
             @NonNull LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState) {
 
-        binding = FragmentMainBinding.inflate(inflater, container, false);
+        binding = ActivityChoicepointLeftBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        final TextView textView = binding.sectionLabel;
-        pageViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
-            @Override
-            public void onChanged(@Nullable String s) {
-                textView.setText(s);
-            }
-        });
         return root;
     }
 
