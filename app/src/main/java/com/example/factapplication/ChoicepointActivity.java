@@ -43,14 +43,23 @@ public class ChoicepointActivity extends AppCompatActivity {
         viewPager.setAdapter(sectionsPagerAdapter);
         TabLayout tabs = binding.tabs;
         tabs.setupWithViewPager(viewPager);
-        FloatingActionButton fab = binding.fab;
+        FloatingActionButton editButton = binding.editButton;
+        FloatingActionButton backButton = binding.backButton;
 
         viewPager.setCurrentItem(1);
 
-        fab.setOnClickListener(new View.OnClickListener() {
+        editButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                Snackbar.make(view, "Edit...", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
+            }
+        });
+
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Snackbar.make(view, "Back...", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
             }
         });
