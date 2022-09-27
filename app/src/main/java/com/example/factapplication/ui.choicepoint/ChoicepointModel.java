@@ -9,6 +9,9 @@ import androidx.lifecycle.ViewModel;
 public class ChoicepointModel extends ViewModel {
 
     private MutableLiveData<Boolean> editing = new MutableLiveData<>();
+    private MutableLiveData<String> scenario = new MutableLiveData<>();
+    private MutableLiveData<String> awayMove = new MutableLiveData<>();
+    private MutableLiveData<String> towardsMove = new MutableLiveData<>();
 
     public void initialize() {
         editing.setValue(true);

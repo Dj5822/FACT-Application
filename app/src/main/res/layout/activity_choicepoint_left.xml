@@ -70,7 +70,7 @@
                     android:id="@+id/choicepointValuesTextEdit"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:text="Values (Separate using commas)"
+                    android:text="Thoughts and Feelings (Separate using commas)"
                     android:textAlignment="center"
                     android:textColor="@color/black"
                     android:textSize="16sp" />
