@@ -8,4 +8,8 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="green">#3d6139</color>
+
+    <color name="love">#cc6666</color>
+    <color name="adv">#7ab3fc</color>
+    <color name="fair">#45ba48</color>
 </resources>
