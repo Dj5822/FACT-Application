@@ -45,12 +45,4 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
         // Show 3 total pages.
         return 3;
     }
-
-    public void switchToEdit() {
-
-    }
-
-    public void switchToText() {
-
-    }
 }
