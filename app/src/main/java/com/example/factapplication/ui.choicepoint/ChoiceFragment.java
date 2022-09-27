@@ -52,11 +52,17 @@ public class ChoiceFragment extends Fragment {
                     binding.awayMoveEdit.setVisibility(View.INVISIBLE);
                     binding.towardsMoveEdit.setVisibility(View.INVISIBLE);
                     binding.scenarioEdit.setVisibility(View.INVISIBLE);
+                    binding.choicepointLeftSideText.setVisibility(View.VISIBLE);
+                    binding.choicepointRightSideText.setVisibility(View.VISIBLE);
+                    binding.choicePointScenarioText.setVisibility(View.VISIBLE);
                 }
                 else {
                     binding.awayMoveEdit.setVisibility(View.VISIBLE);
                     binding.towardsMoveEdit.setVisibility(View.VISIBLE);
                     binding.scenarioEdit.setVisibility(View.VISIBLE);
+                    binding.choicepointLeftSideText.setVisibility(View.INVISIBLE);
+                    binding.choicepointRightSideText.setVisibility(View.INVISIBLE);
+                    binding.choicePointScenarioText.setVisibility(View.INVISIBLE);
                 }
             }
         });

@@ -52,11 +52,19 @@ public class TowardsFragment extends Fragment {
                     binding.choicepointValuesTextEditCard.setVisibility(View.INVISIBLE);
                     binding.choicepointCurrentTextEditCard.setVisibility(View.INVISIBLE);
                     binding.scenarioEdit.setVisibility(View.INVISIBLE);
+                    binding.choicePointValueText.setVisibility(View.VISIBLE);
+                    binding.choicePointValueText2.setVisibility(View.VISIBLE);
+                    binding.choicepointCurrentText.setVisibility(View.VISIBLE);
+                    binding.choicePointScenarioText.setVisibility(View.VISIBLE);
                 }
                 else {
                     binding.choicepointValuesTextEditCard.setVisibility(View.VISIBLE);
                     binding.choicepointCurrentTextEditCard.setVisibility(View.VISIBLE);
                     binding.scenarioEdit.setVisibility(View.VISIBLE);
+                    binding.choicePointValueText.setVisibility(View.INVISIBLE);
+                    binding.choicePointValueText2.setVisibility(View.INVISIBLE);
+                    binding.choicepointCurrentText.setVisibility(View.INVISIBLE);
+                    binding.choicePointScenarioText.setVisibility(View.INVISIBLE);
                 }
             }
         });
