@@ -5,30 +5,26 @@ import android.app.ActionBar;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
-import android.text.Layout;
 import android.util.TypedValue;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Adapter;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
-import android.widget.Spinner;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
-import java.util.ArrayList;
-
 public class BullseyeActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
 
     private ViewHolder vh;
-    String currentValue = "";
-    int spinnerCounter = 0;
+    String currentValue = "Love";
+    private int currentPressed;
+    TextView textView;
+
 
     private class ViewHolder {
         CardView exitConfirmPopup;
@@ -44,13 +40,7 @@ public class BullseyeActivity extends AppCompatActivity implements AdapterView.O
         setContentView(R.layout.activity_bullseye);
         vh = new ViewHolder();
         vh.exitConfirmPopup.setVisibility(View.INVISIBLE);
-        Spinner spinner = (Spinner) findViewById(R.id.spinner);
 
-        ArrayList<String> items = new ArrayList<>();
-        items.add("value1");
-        items.add("value2");
-        items.add("value3");
-        items.add("value4");
 
         Button resetBullseye = findViewById(R.id.resetButton);
         resetBullseye.setOnClickListener(new View.OnClickListener() {
@@ -61,10 +51,34 @@ public class BullseyeActivity extends AppCompatActivity implements AdapterView.O
             }
         });
 
+        Button selectFirstValue = findViewById(R.id.firstValue);
+        selectFirstValue.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                currentValue = "Love";
+                currentPressed = 0;
+            }
+        });
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, items);
-        spinner.setAdapter(adapter);
-        spinner.setOnItemSelectedListener(this);
+        Button selectSecondValue = findViewById(R.id.secondValue);
+        selectSecondValue.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                currentValue = "Adventurousness";
+                currentPressed = 1;
+            }
+        });
+
+        Button selectThirdValue = findViewById(R.id.thirdValue);
+        selectThirdValue.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                currentValue = "fairness";
+                currentPressed = 2;
+            }
+        });
+
+
 
         // Code related to bullseye testing.
         final RelativeLayout rr = (RelativeLayout) findViewById(R.id.rr);
@@ -88,20 +102,27 @@ public class BullseyeActivity extends AppCompatActivity implements AdapterView.O
 
                     // set text
                     TextView textView = new TextView(getApplicationContext());
-                    textView.setText(spinner.getSelectedItem().toString());
+                    textView.setText(currentValue.toString());
+                    System.out.println(currentPressed);
+                    if(currentPressed==0){
+                        textView.setTextColor(Color.rgb(204,102,102));
+                    }
+                    else if (currentPressed==1){
+                        textView.setTextColor(Color.rgb(122,179,252));
+                    }
+                    else {
+                        textView.setTextColor(Color.rgb(55,148,57));
+                    }
                     textView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 20);
                     RelativeLayout.LayoutParams tlp = new RelativeLayout.LayoutParams(ActionBar.LayoutParams.MATCH_PARENT, ActionBar.LayoutParams.WRAP_CONTENT);
                     tlp.setMargins(x+40,y-45,0,0);
                     textView.setLayoutParams(tlp);
-                    textView.setTextColor(Color.rgb(255,0,0));
+
+
                     textView.setTypeface(null, Typeface.BOLD);
                     ((ViewGroup) v).addView(textView);
 
                     // go to next value
-                    if(spinnerCounter+1<items.size()){
-                        spinner.setSelection(spinnerCounter+1);
-                        spinnerCounter++;
-                    }
                 }
                 return false;
             }
@@ -109,22 +130,8 @@ public class BullseyeActivity extends AppCompatActivity implements AdapterView.O
     }
 
     @Override
-    public void onItemSelected(AdapterView<?> parent, View v, int position, long id) {
-        switch (position) {
-            case 0:
-                // Whatever you want to happen when the first item gets selected
-                System.out.println("asdf");
-                currentValue = v.toString();
-                break;
-            case 1:
-                // Whatever you want to happen when the second item gets selected
-                System.out.println("asdf2");
-                break;
-            case 2:
-                // Whatever you want to happen when the thrid item gets selected
-                System.out.println("asd3f");
-                break;
-        }
+    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+
     }
 
     @Override
