@@ -103,7 +103,6 @@ public class BullseyeActivity extends AppCompatActivity implements AdapterView.O
                     // set text
                     TextView textView = new TextView(getApplicationContext());
                     textView.setText(currentValue.toString());
-                    textView.setShadowLayer();
                     System.out.println(currentPressed);
                     if(currentPressed==0){
                         textView.setTextColor(Color.rgb(204,102,102));
@@ -128,6 +127,11 @@ public class BullseyeActivity extends AppCompatActivity implements AdapterView.O
                 return false;
             }
         });
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+
     }
 
     @Override
