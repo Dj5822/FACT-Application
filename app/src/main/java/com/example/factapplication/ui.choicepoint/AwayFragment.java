@@ -181,6 +181,41 @@ public class AwayFragment extends Fragment {
         return root;
     }
 
+    public void updateText() {
+        choicepointModel.getThoughtsAndFeelings().observe(getViewLifecycleOwner(), new Observer<String>() {
+
+            @Override
+            public void onChanged(String s) {
+                binding.choicePointValueText.setText(s);
+            }
+        });
+
+        choicepointModel.getStrategies().observe(getViewLifecycleOwner(), new Observer<String>() {
+
+            @Override
+            public void onChanged(String s) {
+                binding.choicePointValueText2.setText(s);
+            }
+        });
+
+        choicepointModel.getAwayMove().observe(getViewLifecycleOwner(), new Observer<String>() {
+
+            @Override
+            public void onChanged(String s) {
+                binding.choicepointCurrentText.setText(s);
+            }
+        });
+
+        choicepointModel.getScenario().observe(getViewLifecycleOwner(), new Observer<String>() {
+
+            @Override
+            public void onChanged(String s) {
+                binding.choicePointScenarioText.setText(s);
+            }
+        });
+
+    }
+
     @Override
     public void onDestroyView() {
         choicepointModel.getThoughtsAndFeelings().removeObservers(getViewLifecycleOwner());
