@@ -103,7 +103,8 @@ public class ChoiceFragment extends Fragment {
 
             @Override
             public void onChanged(String s) {
-                binding.choicepointLeftSideText.setText(s);
+                if (!binding.choicePointAwayTextField.getText().toString().equals(s))
+                binding.choicePointAwayTextField.setText(s);
             }
         });
 
@@ -111,7 +112,8 @@ public class ChoiceFragment extends Fragment {
 
             @Override
             public void onChanged(String s) {
-                binding.choicepointRightSideText.setText(s);
+                if (!binding.choicePointTowardsTextField.getText().toString().equals(s))
+                binding.choicePointTowardsTextField.setText(s);
             }
         });
 
@@ -119,7 +121,8 @@ public class ChoiceFragment extends Fragment {
 
             @Override
             public void onChanged(String s) {
-                binding.choicePointScenarioText.setText(s);
+                if (!binding.choicePointScenarioTextField.getText().toString().equals(s))
+                binding.choicePointScenarioTextField.setText(s);
             }
         });
 
