@@ -2,6 +2,8 @@ package com.example.factapplication;
 
 import android.annotation.SuppressLint;
 import android.app.ActionBar;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
@@ -18,6 +20,8 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
 public class BullseyeActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
 
     private ViewHolder vh;
@@ -27,10 +31,10 @@ public class BullseyeActivity extends AppCompatActivity implements AdapterView.O
 
 
     private class ViewHolder {
-        CardView exitConfirmPopup;
+        FloatingActionButton backButton;
 
         public ViewHolder() {
-            exitConfirmPopup = findViewById(R.id.exitConfirmPopup2);
+            backButton = findViewById(R.id.bullseyeBackButton);
         }
     }
 
@@ -39,7 +43,32 @@ public class BullseyeActivity extends AppCompatActivity implements AdapterView.O
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bullseye);
         vh = new ViewHolder();
-        vh.exitConfirmPopup.setVisibility(View.INVISIBLE);
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setCancelable(true);
+        builder.setTitle("Exit Bullseye");
+        builder.setMessage("Are you sure you want to exit the activity?");
+        builder.setPositiveButton("Confirm",
+                new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        finish();
+                    }
+                });
+        builder.setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+            }
+        });
+
+        AlertDialog backDialog = builder.create();
+
+        vh.backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                backDialog.show();
+            }
+        });
 
 
         Button resetBullseye = findViewById(R.id.resetButton);
@@ -137,17 +166,5 @@ public class BullseyeActivity extends AppCompatActivity implements AdapterView.O
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
         // TODO Auto-generated method stub
-    }
-
-    public void hideConfirmationPopup(View view) {
-        vh.exitConfirmPopup.setVisibility(View.INVISIBLE);
-    }
-
-    public void showConfirmationPopup(View view) {
-        vh.exitConfirmPopup.setVisibility(View.VISIBLE);
-    }
-
-    public void goBack(View view) {
-        finish();
     }
 }
