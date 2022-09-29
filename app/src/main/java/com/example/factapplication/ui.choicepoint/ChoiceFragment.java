@@ -1,6 +1,8 @@
 package com.example.factapplication.ui.choicepoint;
 
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,6 +10,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
@@ -44,6 +47,57 @@ public class ChoiceFragment extends Fragment {
 
         binding = ActivityChoicepointCenterBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
+
+        binding.choicePointAwayTextField.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                choicepointModel.setAwayMove(binding.choicePointAwayTextField.getText().toString());
+            }
+        });
+
+        binding.choicePointTowardsTextField.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                choicepointModel.setTowardsMove(binding.choicePointTowardsTextField.getText().toString());
+            }
+        });
+
+        binding.choicePointScenarioTextField.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                choicepointModel.setScenario(binding.choicePointScenarioTextField.getText().toString());
+            }
+        });
 
         choicepointModel.editModeEnabled().observe(getViewLifecycleOwner(), new Observer<Boolean>() {
             @Override
