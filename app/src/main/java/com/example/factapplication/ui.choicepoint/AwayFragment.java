@@ -1,6 +1,7 @@
 package com.example.factapplication.ui.choicepoint;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -47,6 +48,9 @@ public class AwayFragment extends Fragment {
 
         binding = ActivityChoicepointLeftBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
+
+        binding.choicePointValueText.setTextColor(Color.RED);
+        binding.choicePointValueText2.setTextColor(Color.RED);
 
         binding.choicePointValuesTextField.addTextChangedListener(new TextWatcher() {
             @Override
