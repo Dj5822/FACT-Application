@@ -183,6 +183,14 @@ public class AwayFragment extends Fragment {
 
     @Override
     public void onDestroyView() {
+        choicepointModel.getThoughtsAndFeelings().removeObservers(getViewLifecycleOwner());
+
+        choicepointModel.getStrategies().removeObservers(getViewLifecycleOwner());
+
+        choicepointModel.getAwayMove().removeObservers(getViewLifecycleOwner());
+
+        choicepointModel.getScenario().removeObservers(getViewLifecycleOwner());
+
         super.onDestroyView();
         binding = null;
     }

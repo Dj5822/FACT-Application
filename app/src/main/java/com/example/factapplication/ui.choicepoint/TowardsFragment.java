@@ -183,6 +183,14 @@ public class TowardsFragment extends Fragment {
 
     @Override
     public void onDestroyView() {
+        choicepointModel.getValues().removeObservers(getViewLifecycleOwner());
+
+        choicepointModel.getStrategies().removeObservers(getViewLifecycleOwner());
+
+        choicepointModel.getTowardsMove().removeObservers(getViewLifecycleOwner());
+
+        choicepointModel.getScenario().removeObservers(getViewLifecycleOwner());
+
         super.onDestroyView();
         binding = null;
     }

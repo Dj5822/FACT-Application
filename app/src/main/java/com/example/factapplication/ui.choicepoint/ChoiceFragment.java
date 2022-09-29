@@ -153,6 +153,12 @@ public class ChoiceFragment extends Fragment {
 
     @Override
     public void onDestroyView() {
+        choicepointModel.getAwayMove().removeObservers(getViewLifecycleOwner());
+
+        choicepointModel.getTowardsMove().removeObservers(getViewLifecycleOwner());
+
+        choicepointModel.getScenario().removeObservers(getViewLifecycleOwner());
+
         super.onDestroyView();
         binding = null;
     }
