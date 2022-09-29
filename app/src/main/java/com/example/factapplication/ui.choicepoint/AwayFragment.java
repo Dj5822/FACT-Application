@@ -116,15 +116,37 @@ public class AwayFragment extends Fragment {
             }
         });
 
-        /*
-        choicepointModel.getAwayMove().observe(getViewLifecycleOwner(), new Observer<String>() {
+        choicepointModel.getThoughtsAndFeelings().observe(getViewLifecycleOwner(), new Observer<String>() {
+
             @Override
-            public void onChanged(@Nullable String text) {
-                binding.choicePointCenterTextField.setText(text);
+            public void onChanged(String s) {
+                binding.choicePointValueText.setText(s);
             }
         });
 
-        */
+        choicepointModel.getStrategies().observe(getViewLifecycleOwner(), new Observer<String>() {
+
+            @Override
+            public void onChanged(String s) {
+                binding.choicePointValueText2.setText(s);
+            }
+        });
+
+        choicepointModel.getAwayMove().observe(getViewLifecycleOwner(), new Observer<String>() {
+
+            @Override
+            public void onChanged(String s) {
+                binding.choicepointCurrentText.setText(s);
+            }
+        });
+
+        choicepointModel.getScenario().observe(getViewLifecycleOwner(), new Observer<String>() {
+
+            @Override
+            public void onChanged(String s) {
+                binding.choicePointScenarioText.setText(s);
+            }
+        });
 
         choicepointModel.editModeEnabled().observe(getViewLifecycleOwner(), new Observer<Boolean>() {
             @Override

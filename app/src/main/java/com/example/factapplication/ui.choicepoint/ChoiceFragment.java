@@ -99,6 +99,30 @@ public class ChoiceFragment extends Fragment {
             }
         });
 
+        choicepointModel.getAwayMove().observe(getViewLifecycleOwner(), new Observer<String>() {
+
+            @Override
+            public void onChanged(String s) {
+                binding.choicepointLeftSideText.setText(s);
+            }
+        });
+
+        choicepointModel.getTowardsMove().observe(getViewLifecycleOwner(), new Observer<String>() {
+
+            @Override
+            public void onChanged(String s) {
+                binding.choicepointRightSideText.setText(s);
+            }
+        });
+
+        choicepointModel.getScenario().observe(getViewLifecycleOwner(), new Observer<String>() {
+
+            @Override
+            public void onChanged(String s) {
+                binding.choicePointScenarioText.setText(s);
+            }
+        });
+
         choicepointModel.editModeEnabled().observe(getViewLifecycleOwner(), new Observer<Boolean>() {
             @Override
             public void onChanged(@Nullable Boolean enabled) {
