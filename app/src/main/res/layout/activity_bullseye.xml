@@ -6,8 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".BullseyeActivity"
-    android:orientation="vertical"
-    android:layout_margin="16dp">
+    android:orientation="vertical">
 
 
 
@@ -15,7 +14,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:gravity="center">
+        android:gravity="center"
+        android:layout_marginTop="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp">
         <TextView
             android:id="@+id/textView"
             android:textSize="30dp"
@@ -76,12 +78,12 @@
 
     </LinearLayout>
 
-
-
     <RelativeLayout
         android:id="@+id/rr"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp">
         <androidx.cardview.widget.CardView
             android:id="@+id/exitConfirmPopup2"
             android:layout_width="wrap_content"
@@ -90,67 +92,31 @@
             android:layout_gravity="center"
             app:cardCornerRadius="8dp"
             >
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Exit the activity?"
-                    android:textAlignment="center"
-                    android:textSize="36sp"
-                    android:paddingTop="32dp"
-                    android:paddingLeft="32dp"
-                    android:paddingRight="32dp"/>
-                <LinearLayout
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:paddingTop="16dp"
-                    android:paddingBottom="16dp"
-                    >
-                    <Button
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Exit"
-                        android:layout_weight="1"
-                        android:layout_marginLeft="16dp"
-                        android:layout_marginRight="16dp"
-                        android:onClick="goBack"/>
-                    <Button
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Stay"
-                        android:layout_weight="1"
-                        android:layout_marginLeft="16dp"
-                        android:layout_marginRight="16dp"
-                        android:onClick="hideConfirmationPopup"/>
-                </LinearLayout>
-            </LinearLayout>
 
 
         </androidx.cardview.widget.CardView>
+
         <ImageView
             android:id="@+id/imageView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:src="@drawable/bullseye" />
 
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true">
 
-            <Button
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/bullseyeBackButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="16sp"
-                android:text="Back"
-                android:onClick="showConfirmationPopup"/>
+                android:layout_marginBottom="16dp"
+                app:srcCompat="@drawable/ic_baseline_arrow_back_24" />
         </LinearLayout>
+
     </RelativeLayout>
+
 
 
 </LinearLayout>

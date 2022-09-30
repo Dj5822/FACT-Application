@@ -15,22 +15,28 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
     @StringRes
     private static final int[] TAB_TITLES = new int[]{R.string.tab_text_1, R.string.tab_text_2, R.string.tab_text_3};
     private final Context mContext;
+    private AwayFragment awayFragment;
+    private ChoiceFragment choiceFragment;
+    private TowardsFragment towardsFragment;
 
     public SectionsPagerAdapter(Context context, FragmentManager fm) {
         super(fm);
         mContext = context;
+        awayFragment = AwayFragment.newInstance();
+        choiceFragment = ChoiceFragment.newInstance();
+        towardsFragment = TowardsFragment.newInstance();
     }
 
     @Override
     public Fragment getItem(int position) {
         if (position == 0) {
-            return AwayFragment.newInstance();
+            return awayFragment;
         }
         else if (position == 1) {
-            return ChoiceFragment.newInstance();
+            return choiceFragment;
         }
         else {
-            return TowardsFragment.newInstance();
+            return towardsFragment;
         }
     }
 
@@ -40,17 +46,16 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
         return mContext.getResources().getString(TAB_TITLES[position]);
     }
 
+    public void updateText() {
+        awayFragment.updateText();
+        choiceFragment.updateText();
+        towardsFragment.updateText();
+
+    }
+
     @Override
     public int getCount() {
         // Show 3 total pages.
         return 3;
-    }
-
-    public void switchToEdit() {
-
-    }
-
-    public void switchToText() {
-
     }
 }

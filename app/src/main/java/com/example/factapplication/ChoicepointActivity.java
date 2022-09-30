@@ -2,36 +2,27 @@ package com.example.factapplication;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
-import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
+
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.cardview.widget.CardView;
+
+import com.example.factapplication.ui.choicepoint.ChoicepointModel;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.tabs.TabLayout;
 
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.viewpager.widget.ViewPager;
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.View;
 
 import com.example.factapplication.ui.choicepoint.SectionsPagerAdapter;
 import com.example.factapplication.databinding.ActivityChoicepointMainBinding;
 
-import com.google.android.material.textfield.TextInputEditText;
-
 public class ChoicepointActivity extends AppCompatActivity {
 
     private ActivityChoicepointMainBinding binding;
-    private boolean editing = true;
+    private ChoicepointModel choicepointModel;
 
     // Entry point
     @Override
@@ -41,9 +32,13 @@ public class ChoicepointActivity extends AppCompatActivity {
         binding = ActivityChoicepointMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        choicepointModel = new ViewModelProvider(this).get(ChoicepointModel.class);
+        choicepointModel.initialize();
+
         SectionsPagerAdapter sectionsPagerAdapter = new SectionsPagerAdapter(this, getSupportFragmentManager());
         ViewPager viewPager = binding.viewPager;
         viewPager.setAdapter(sectionsPagerAdapter);
+        viewPager.setOffscreenPageLimit(2);
         TabLayout tabs = binding.tabs;
         tabs.setupWithViewPager(viewPager);
         FloatingActionButton editButton = binding.editButton;
@@ -73,14 +68,16 @@ public class ChoicepointActivity extends AppCompatActivity {
         editButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (editing) {
-                    editButton.setImageResource(R.drawable.ic_baseline_done_24);
-                    sectionsPagerAdapter.switchToText();
-                } else {
-                    editButton.setImageResource(R.drawable.ic_baseline_edit_24);
-                    sectionsPagerAdapter.switchToEdit();
-                }
-                editing = !editing;
+                choicepointModel.toggleEditing();
+                choicepointModel.editModeEnabled().observe(ChoicepointActivity.this, editing -> {
+                    if (editing) {
+                        editButton.setImageResource(R.drawable.ic_baseline_edit_24);
+                        sectionsPagerAdapter.updateText();
+                    }
+                    else {
+                        editButton.setImageResource(R.drawable.ic_baseline_done_24);
+                    }
+                });
             }
         });
 

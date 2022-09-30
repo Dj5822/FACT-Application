@@ -1,14 +1,16 @@
 package com.example.factapplication.ui.choicepoint;
 
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
@@ -21,7 +23,7 @@ public class ChoiceFragment extends Fragment {
 
     private static final String ARG_SECTION_NUMBER = "section_number";
 
-    private PageViewModel pageViewModel;
+    private ChoicepointModel choicepointModel;
     private ActivityChoicepointCenterBinding binding;
 
     public static ChoiceFragment newInstance() {
@@ -35,12 +37,7 @@ public class ChoiceFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        pageViewModel = new ViewModelProvider(this).get(PageViewModel.class);
-        int index = 1;
-        if (getArguments() != null) {
-            index = getArguments().getInt(ARG_SECTION_NUMBER);
-        }
-        pageViewModel.setIndex(index);
+        choicepointModel = new ViewModelProvider(requireActivity()).get(ChoicepointModel.class);
     }
 
     @Override
@@ -51,11 +48,144 @@ public class ChoiceFragment extends Fragment {
         binding = ActivityChoicepointCenterBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
+        binding.choicePointAwayTextField.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                choicepointModel.setAwayMove(binding.choicePointAwayTextField.getText().toString());
+            }
+        });
+
+        binding.choicePointTowardsTextField.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                choicepointModel.setTowardsMove(binding.choicePointTowardsTextField.getText().toString());
+            }
+        });
+
+        binding.choicePointScenarioTextField.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                choicepointModel.setScenario(binding.choicePointScenarioTextField.getText().toString());
+            }
+        });
+
+        choicepointModel.getAwayMove().observe(getViewLifecycleOwner(), new Observer<String>() {
+
+            @Override
+            public void onChanged(String s) {
+                if (!binding.choicePointAwayTextField.getText().toString().equals(s))
+                binding.choicePointAwayTextField.setText(s);
+            }
+        });
+
+        choicepointModel.getTowardsMove().observe(getViewLifecycleOwner(), new Observer<String>() {
+
+            @Override
+            public void onChanged(String s) {
+                if (!binding.choicePointTowardsTextField.getText().toString().equals(s))
+                binding.choicePointTowardsTextField.setText(s);
+            }
+        });
+
+        choicepointModel.getScenario().observe(getViewLifecycleOwner(), new Observer<String>() {
+
+            @Override
+            public void onChanged(String s) {
+                if (!binding.choicePointScenarioTextField.getText().toString().equals(s))
+                binding.choicePointScenarioTextField.setText(s);
+            }
+        });
+
+        choicepointModel.editModeEnabled().observe(getViewLifecycleOwner(), new Observer<Boolean>() {
+            @Override
+            public void onChanged(@Nullable Boolean enabled) {
+                if (enabled) {
+                    binding.awayMoveEdit.setVisibility(View.INVISIBLE);
+                    binding.towardsMoveEdit.setVisibility(View.INVISIBLE);
+                    binding.scenarioEdit.setVisibility(View.INVISIBLE);
+                    binding.choicepointLeftSideText.setVisibility(View.VISIBLE);
+                    binding.choicepointRightSideText.setVisibility(View.VISIBLE);
+                    binding.choicePointScenarioText.setVisibility(View.VISIBLE);
+                }
+                else {
+                    binding.awayMoveEdit.setVisibility(View.VISIBLE);
+                    binding.towardsMoveEdit.setVisibility(View.VISIBLE);
+                    binding.scenarioEdit.setVisibility(View.VISIBLE);
+                    binding.choicepointLeftSideText.setVisibility(View.INVISIBLE);
+                    binding.choicepointRightSideText.setVisibility(View.INVISIBLE);
+                    binding.choicePointScenarioText.setVisibility(View.INVISIBLE);
+                }
+            }
+        });
+
         return root;
+    }
+
+    public void updateText() {
+        choicepointModel.getAwayMove().observe(getViewLifecycleOwner(), new Observer<String>() {
+
+            @Override
+            public void onChanged(String s) {
+                binding.choicepointLeftSideText.setText(s);
+            }
+        });
+
+        choicepointModel.getTowardsMove().observe(getViewLifecycleOwner(), new Observer<String>() {
+
+            @Override
+            public void onChanged(String s) {
+                binding.choicepointRightSideText.setText(s);
+            }
+        });
+
+        choicepointModel.getScenario().observe(getViewLifecycleOwner(), new Observer<String>() {
+
+            @Override
+            public void onChanged(String s) {
+                binding.choicePointScenarioText.setText(s);
+            }
+        });
+
     }
 
     @Override
     public void onDestroyView() {
+        choicepointModel.getAwayMove().removeObservers(getViewLifecycleOwner());
+
+        choicepointModel.getTowardsMove().removeObservers(getViewLifecycleOwner());
+
+        choicepointModel.getScenario().removeObservers(getViewLifecycleOwner());
+
         super.onDestroyView();
         binding = null;
     }
