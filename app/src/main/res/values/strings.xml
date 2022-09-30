@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">FACT application</string>
+    <string name="app_name">fACT Interactive Tools Application</string>
     <string name="left_side_text">left side text</string>
     <string name="right_side_text">right side text</string>
     <string name="current_text">current text</string>
