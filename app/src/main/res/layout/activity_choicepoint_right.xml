@@ -36,7 +36,7 @@
             android:layout_marginTop="18dp"
             android:paddingLeft="22sp"
             android:paddingBottom="82sp"
-            android:text="Health"
+            android:text=""
             android:textSize="36sp" />
 
         <TextView
@@ -47,7 +47,7 @@
             android:layout_marginTop="18dp"
             android:paddingTop="82sp"
             android:paddingRight="22sp"
-            android:text="Family"
+            android:text=""
             android:textAlignment="textEnd"
             android:textSize="36sp" />
 

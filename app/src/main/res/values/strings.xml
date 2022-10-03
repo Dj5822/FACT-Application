@@ -1,9 +1,9 @@
 <resources>
     <string name="app_name">fACT Interactive Tools Application</string>
-    <string name="left_side_text">left side text</string>
-    <string name="right_side_text">right side text</string>
-    <string name="current_text">current text</string>
-    <string name="current_scenario">Current Scenario</string>
+    <string name="left_side_text"> </string>
+    <string name="right_side_text"> </string>
+    <string name="current_text"> </string>
+    <string name="current_scenario"> </string>
     <string name="tab_text_1">Away</string>
     <string name="tab_text_2">Choice</string>
     <string name="tab_text_3">Towards</string>
