@@ -38,6 +38,7 @@ public class ChoicepointActivity extends AppCompatActivity {
         SectionsPagerAdapter sectionsPagerAdapter = new SectionsPagerAdapter(this, getSupportFragmentManager());
         ViewPager viewPager = binding.viewPager;
         viewPager.setAdapter(sectionsPagerAdapter);
+        viewPager.setOffscreenPageLimit(2);
         TabLayout tabs = binding.tabs;
         tabs.setupWithViewPager(viewPager);
         FloatingActionButton editButton = binding.editButton;
@@ -71,6 +72,7 @@ public class ChoicepointActivity extends AppCompatActivity {
                 choicepointModel.editModeEnabled().observe(ChoicepointActivity.this, editing -> {
                     if (editing) {
                         editButton.setImageResource(R.drawable.ic_baseline_edit_24);
+                        sectionsPagerAdapter.updateText();
                     }
                     else {
                         editButton.setImageResource(R.drawable.ic_baseline_done_24);

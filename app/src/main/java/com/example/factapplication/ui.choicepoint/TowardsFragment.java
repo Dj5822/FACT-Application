@@ -1,6 +1,9 @@
 package com.example.factapplication.ui.choicepoint;
 
+import android.graphics.Color;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -45,6 +48,79 @@ public class TowardsFragment extends Fragment {
         binding = ActivityChoicepointRightBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
+        binding.choicePointValueText.setTextColor(Color.parseColor("#127a1e"));
+        binding.choicePointValueText2.setTextColor(Color.parseColor("#127a1e"));
+
+        binding.choicePointValuesTextField.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                choicepointModel.setValues(binding.choicePointValuesTextField.getText().toString());
+            }
+        });
+
+        binding.choicePointStrategiesTextField.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                choicepointModel.setStrategies(binding.choicePointStrategiesTextField.getText().toString());
+            }
+        });
+
+        binding.choicePointCenterTextField.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                choicepointModel.setTowardsMove(binding.choicePointCenterTextField.getText().toString());
+            }
+        });
+
+        binding.choicePointScenarioTextField.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                choicepointModel.setScenario(binding.choicePointScenarioTextField.getText().toString());
+            }
+        });
+
+
+
         choicepointModel.editModeEnabled().observe(getViewLifecycleOwner(), new Observer<Boolean>() {
             @Override
             public void onChanged(@Nullable Boolean enabled) {
@@ -69,11 +145,90 @@ public class TowardsFragment extends Fragment {
             }
         });
 
+        choicepointModel.getValues().observe(getViewLifecycleOwner(), new Observer<String>() {
+
+            @Override
+            public void onChanged(String s) {
+                if (!binding.choicePointValuesTextField.getText().toString().equals(s))
+                binding.choicePointValuesTextField.setText(s);
+            }
+        });
+
+        choicepointModel.getStrategies().observe(getViewLifecycleOwner(), new Observer<String>() {
+
+            @Override
+            public void onChanged(String s) {
+                if (!binding.choicePointStrategiesTextField.getText().toString().equals(s))
+                binding.choicePointStrategiesTextField.setText(s);
+            }
+        });
+
+        choicepointModel.getTowardsMove().observe(getViewLifecycleOwner(), new Observer<String>() {
+
+            @Override
+            public void onChanged(String s) {
+                if (!binding.choicePointCenterTextField.getText().toString().equals(s))
+                binding.choicePointCenterTextField.setText(s);
+            }
+        });
+
+        choicepointModel.getScenario().observe(getViewLifecycleOwner(), new Observer<String>() {
+
+            @Override
+            public void onChanged(String s) {
+                if (!binding.choicePointScenarioTextField.getText().toString().equals(s))
+                binding.choicePointScenarioTextField.setText(s);
+            }
+        });
+
         return root;
+    }
+
+    public void updateText() {
+        choicepointModel.getValues().observe(getViewLifecycleOwner(), new Observer<String>() {
+
+            @Override
+            public void onChanged(String s) {
+                binding.choicePointValueText.setText(s);
+            }
+        });
+
+        choicepointModel.getStrategies().observe(getViewLifecycleOwner(), new Observer<String>() {
+
+            @Override
+            public void onChanged(String s) {
+                binding.choicePointValueText2.setText(s);
+            }
+        });
+
+        choicepointModel.getTowardsMove().observe(getViewLifecycleOwner(), new Observer<String>() {
+
+            @Override
+            public void onChanged(String s) {
+                binding.choicepointCurrentText.setText(s);
+            }
+        });
+
+        choicepointModel.getScenario().observe(getViewLifecycleOwner(), new Observer<String>() {
+
+            @Override
+            public void onChanged(String s) {
+                binding.choicePointScenarioText.setText(s);
+            }
+        });
+
     }
 
     @Override
     public void onDestroyView() {
+        choicepointModel.getValues().removeObservers(getViewLifecycleOwner());
+
+        choicepointModel.getStrategies().removeObservers(getViewLifecycleOwner());
+
+        choicepointModel.getTowardsMove().removeObservers(getViewLifecycleOwner());
+
+        choicepointModel.getScenario().removeObservers(getViewLifecycleOwner());
+
         super.onDestroyView();
         binding = null;
     }

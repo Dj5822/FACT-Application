@@ -8,28 +8,38 @@
     tools:context=".MenuActivity"
     android:orientation="vertical"
     android:layout_margin="16dp"
-    android:layout_marginTop="50dp">
+    android:layout_marginTop="100dp">
 
 
     <Button
         android:id="@+id/choicePointButton"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:text="Choice point"
-        android:gravity="center"
+        android:layout_height="189dp"
         android:layout_margin="16dp"
+        android:layout_weight="1"
+        android:gravity="center"
         android:onClick="goToChoicepoint"
+        android:text="Choice Point"
+        android:textAllCaps="false"
+        android:textSize="40sp"
+        app:iconGravity="textStart"
+        app:icon="@mipmap/cp_foreground"
+        android:backgroundTint="@color/main_medium"
         />
 
     <Button
         android:id="@+id/bullseyeButton"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="189dp"
+        android:layout_margin="16dp"
         android:layout_weight="1"
-        android:maxHeight="50dp"
-        android:text="Bullseye"
         android:gravity="center"
-        android:layout_margin="16dp" />
+        android:maxHeight="50dp"
+        android:text="Bull's Eye"
+        android:textSize="40sp"
+        app:iconGravity="textStart"
+        app:icon="@mipmap/ic_launcher_foreground"
+        android:textAllCaps="false"
+        android:backgroundTint="@color/main_medium"/>
 
 </LinearLayout>

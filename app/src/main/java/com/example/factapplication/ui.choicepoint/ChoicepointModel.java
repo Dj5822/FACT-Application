@@ -39,48 +39,48 @@ public class ChoicepointModel extends ViewModel {
         return editing;
     }
 
-    public void setAwayMove(MutableLiveData<String> awayMove) {
-        this.awayMove = awayMove;
+    public void setAwayMove(String awayMove) {
+        this.awayMove.setValue(awayMove);
     }
 
     public MutableLiveData<String> getAwayMove() {
         return awayMove;
     }
 
-    public void setScenario(MutableLiveData<String> scenario) {
-        this.scenario = scenario;
+    public void setScenario(String scenario) {
+        this.scenario.setValue(scenario);
     }
 
     public MutableLiveData<String> getScenario() {
         return scenario;
     }
 
-    public void setStrategies(MutableLiveData<String> strategies) {
-        this.strategies = strategies;
+    public void setStrategies(String strategies) {
+        this.strategies.setValue(strategies);
     }
 
     public MutableLiveData<String> getStrategies() {
         return strategies;
     }
 
-    public void setThoughtsAndFeelings(MutableLiveData<String> thoughtsAndFeelings) {
-        this.thoughtsAndFeelings = thoughtsAndFeelings;
+    public void setThoughtsAndFeelings(String thoughtsAndFeelings) {
+        this.thoughtsAndFeelings.setValue(thoughtsAndFeelings);
     }
 
     public MutableLiveData<String> getThoughtsAndFeelings() {
         return thoughtsAndFeelings;
     }
 
-    public void setTowardsMove(MutableLiveData<String> towardsMove) {
-        this.towardsMove = towardsMove;
+    public void setTowardsMove(String towardsMove) {
+        this.towardsMove.setValue(towardsMove);
     }
 
     public MutableLiveData<String> getTowardsMove() {
         return towardsMove;
     }
 
-    public void setValues(MutableLiveData<String> values) {
-        this.values = values;
+    public void setValues(String values) {
+        this.values.setValue(values);
     }
 
     public MutableLiveData<String> getValues() {
